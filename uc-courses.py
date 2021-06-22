@@ -14,6 +14,28 @@ course_dict = {}
 
 links = []
 
+should_be = soup.find('div', attrs = {'id':'collapse3'})
+first_year = should_be.find_all('div', class_='section')[1]
+first_year_block = first_year.find_all('li').get_text()
+#first_year_courses = first_year_block.find('li')
+
+print(first_year_block)
+
+
+
+#sections = soup.find_all(class_="sectiontitle")[1]
+#print(sections)
+
+#pick_year = input("Which year would you like to search for, First year or 2nd-4th years?")
+#if pick_year == "First year":
+#    section = soup.find_all(class_="sectiontitle")[0]
+#elif pick_year == "2nd-4th years":
+#    section = soup.find_all(class_="sectiontitle")[1]
+
+
+
+
+
 print("Available 2nd Year/1st Pro Software Engineering Courses:")
 for course in ex:
     i = course.find('a')
@@ -41,7 +63,7 @@ while True:
         r = requests.get(course_url)
         soup2 = BeautifulSoup(r.content, 'html5lib')
 
-        html_prereq_code = soup2.find(id='ctl00_ContentPlaceHolder1_PCRRepeater_ctl00_PCRDescriptionLabel')
+        html_prereq_code = soup2.find(id='ctl00_ContentPlaceHolder1_PCRRepeater_ctl00_PCRDescriptionLabel') #2nd-4th years
 
 
         preq_list = html_prereq_code.find_all('a')
