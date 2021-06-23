@@ -109,51 +109,6 @@ while True:
             print(prereq_course)
 
 
-
-
-
-
-
-
-
-#for line in prereqs_html:
-    #print(line.find_all('a'))
-    
-  #  print(line)
- #  # print(i.get('href'))
-    
-    
-   # spilt_prereq = line.text.split()
-    #print(split_prereq)
-
-    
-    #prereq_course = line.text
-    #print(prereq_course)
-    
-
-
-
-
-#<span id="ctl00_ContentPlaceHolder1_PCRRepeater_ctl00_PCRDescriptionLabel">(1) <a href="GetCourseDetails.aspx?course=COSC121&amp;year=2021">COSC121</a>; (2) <a href="GetCourseDetails.aspx?course=COSC122&amp;year=2021">COSC122</a>; RP: <a href="GetCourseDetails.aspx?course=MATH120&amp;year=2021">MATH120</a></span>
-
-
-#course_url = "https://www.canterbury.ac.nz/study/subjects/software-engineering/"
-      
-#soup = BeautifulSoup(r.content, 'html5lib')    
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
    # links.append(i.get('href'))
     
 
