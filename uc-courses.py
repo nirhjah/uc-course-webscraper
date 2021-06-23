@@ -4,6 +4,10 @@ from bs4 import BeautifulSoup
 URL = "https://www.canterbury.ac.nz/study/subjects/software-engineering/"
 r = requests.get(URL)
   
+    #web scraper to scrape grades from learn or quiz server to tell you if you're on track to pass? discord bot? similar to uc results 
+
+
+
 soup = BeautifulSoup(r.content, 'html5lib') # If this line causes an error, run 'pip install html5lib' or install html5lib
 
 ex = soup.find('ul', attrs = {'id':'unique_2659__ul_04CB37EDBAE6463AB90DAC10466D8967'})
