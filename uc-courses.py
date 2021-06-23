@@ -14,38 +14,75 @@ course_dict = {}
 
 links = []
 
-should_be = soup.find('div', attrs = {'id':'collapse3'})
-first_year = should_be.find_all('div', class_='section')[1]
-first_year_block = first_year.find_all('li').get_text()
-#first_year_courses = first_year_block.find('li')
 
-print(first_year_block)
 
 
 
 #sections = soup.find_all(class_="sectiontitle")[1]
 #print(sections)
 
-#pick_year = input("Which year would you like to search for, First year or 2nd-4th years?")
-#if pick_year == "First year":
-#    section = soup.find_all(class_="sectiontitle")[0]
-#elif pick_year == "2nd-4th years":
-#    section = soup.find_all(class_="sectiontitle")[1]
+pick_year = input("Which year would you like to search for, First year or 2nd-4th years?")
+if pick_year == "First year":
+    print("Available 1st Year Courses:")
+
+    #section = soup.find_all(class_="sectiontitle")[0]
+    should_be = soup.find('div', attrs = {'id':'collapse3'})
+    first_year = should_be.find_all('div', class_='section')[1]
+    first_year_courses = first_year.find_all('li')
+    for i in first_year_courses:
+        print(i.text)
+elif pick_year == "2nd year":
+    #section = soup.find_all(class_="sectiontitle")[1]
+    #print(section)
+    print("Available 2nd Year/1st Pro Software Engineering Courses:")
+    should_be = soup.find('div', attrs = {'id':'collapse3'})
+
+    section = should_be.find_all('div', class_='section')[2]
+
+    all_years = section.find_all('ul')[1]
+    second_year_options = section.find_all('ul')[2]
+
+    second_year = all_years.find_all('li')
+
+    for course in second_year:
+        i = course.find('a')
+
+        split_course = course.text.split()
+        course_code = split_course[0] + "" + split_course[1]
+        print(course_code)
+        links.append(i.get('href'))
+        course_dict[course_code] = i.get('href')
+
+        #if more than one course in a line like math220 or emth210
+
+
+    print("And one of the following: ")
+    for course in second_year_options:
+        i = course.find('a')
+
+        split_course = course.text.split()
+        course_code = split_course[0] + "" + split_course[1]
+        print(course_code)
+        links.append(i.get('href'))
+        course_dict[course_code] = i.get('href')
 
 
 
 
 
-print("Available 2nd Year/1st Pro Software Engineering Courses:")
-for course in ex:
-    i = course.find('a')
+
+
+
+# print("Available 2nd Year/1st Pro Software Engineering Courses:")
+# for course in ex:
+#     i = course.find('a')
     
-   # print(i)
-    split_course = course.text.split()
-    course_code = split_course[0] + "" + split_course[1]
-    print(course_code)
-    links.append(i.get('href'))
-    course_dict[course_code] = i.get('href')
+#    # print(i)
+#     split_course = course.text.split()
+#     course_code = split_course[0] + "" + split_course[1]
+#     print(course_code)
+#     links.append(i.get('href'))
+#     course_dict[course_code] = i.get('href')
     
     
     # print(course.text, i.get('href')) #gets course name and link to the course
