@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-
   
 URL = "https://www.canterbury.ac.nz/study/subjects/software-engineering/"
 r = requests.get(URL)
@@ -51,6 +50,7 @@ elif pick_year == "2nd year":
     second_year_options = second_to_fourth_year.find_all('ul')[2]
     for course in second_year_courses:
         print(splitting_course(course))
+        #if more than one course in a line like math220 or emth210
 
     print("And one of the following: ")
     for course in second_year_options:
@@ -99,65 +99,40 @@ while True:
         soup2 = BeautifulSoup(r.content, 'html5lib')
 
         html_prereq_code = soup2.find(id='ctl00_ContentPlaceHolder1_PCRRepeater_ctl00_PCRDescriptionLabel') #2nd-4th years
+
+        #print(html_prereq_code)
+
         preq_list = html_prereq_code.find_all('a')
 
-        #issue: engr101 and engr100 and cosc131 have links inside of them, need to scrape to  those if
+        #issue: engr101 and engr100 and cosc131 have links inside of them, need to scrape to  those
+
 
         print(html_prereq_code.text)
-       # for prereq in preq_list:
-        #    prereq_course = prereq.text
-         #   print(prereq_course)
-
-<<<<<<< HEAD
-=======
+        for prereq in preq_list:
+            prereq_course = prereq.text
+            print(prereq_course)
 
 
-
-
-
-
-
-#for line in prereqs_html:
-    #print(line.find_all('a'))
-    
-  #  print(line)
- #  # print(i.get('href'))
-    
-    
-   # spilt_prereq = line.text.split()
-    #print(split_prereq)
-
-    
-    #prereq_course = line.text
-    #print(prereq_course)
-    
-
-
-
-
-#<span id="ctl00_ContentPlaceHolder1_PCRRepeater_ctl00_PCRDescriptionLabel">(1) <a href="GetCourseDetails.aspx?course=COSC121&amp;year=2021">COSC121</a>; (2) <a href="GetCourseDetails.aspx?course=COSC122&amp;year=2021">COSC122</a>; RP: <a href="GetCourseDetails.aspx?course=MATH120&amp;year=2021">MATH120</a></span>
-
-
-#course_url = "https://www.canterbury.ac.nz/study/subjects/software-engineering/"
-      
-#soup = BeautifulSoup(r.content, 'html5lib')    
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
    # links.append(i.get('href'))
->>>>>>> parent of 12f994a (Update uc-courses.py)
     
 
 
 
+#print(links)    
+
+
+
+   # links = []
+   # for link in soup.findAll('a'):
+    #    links.append(link.get('href'))
+
+#print(ex.prettify())
+
+
+
+
+
+
+
+#ex = soup.find_all(id="2nd–4th years")
+#ex = soup.find_all(class_="sectiontitle")
