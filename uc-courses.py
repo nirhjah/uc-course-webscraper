@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+
   
 URL = "https://www.canterbury.ac.nz/study/subjects/software-engineering/"
 r = requests.get(URL)
@@ -50,7 +51,6 @@ elif pick_year == "2nd year":
     second_year_options = second_to_fourth_year.find_all('ul')[2]
     for course in second_year_courses:
         print(splitting_course(course))
-        #if more than one course in a line like math220 or emth210
 
     print("And one of the following: ")
     for course in second_year_options:
@@ -99,40 +99,16 @@ while True:
         soup2 = BeautifulSoup(r.content, 'html5lib')
 
         html_prereq_code = soup2.find(id='ctl00_ContentPlaceHolder1_PCRRepeater_ctl00_PCRDescriptionLabel') #2nd-4th years
-
-        #print(html_prereq_code)
-
         preq_list = html_prereq_code.find_all('a')
 
-        #issue: engr101 and engr100 and cosc131 have links inside of them, need to scrape to  those
-
+        #issue: engr101 and engr100 and cosc131 have links inside of them, need to scrape to  those if
 
         print(html_prereq_code.text)
-        for prereq in preq_list:
-            prereq_course = prereq.text
-            print(prereq_course)
+       # for prereq in preq_list:
+        #    prereq_course = prereq.text
+         #   print(prereq_course)
 
-
-   # links.append(i.get('href'))
     
 
 
 
-#print(links)    
-
-
-
-   # links = []
-   # for link in soup.findAll('a'):
-    #    links.append(link.get('href'))
-
-#print(ex.prettify())
-
-
-
-
-
-
-
-#ex = soup.find_all(id="2nd–4th years")
-#ex = soup.find_all(class_="sectiontitle")
